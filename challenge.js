@@ -30,13 +30,16 @@ function compare(){
     }
 }
 function war(){
-
+    cardsInPlay1.forEach()
 };
 
-function playRound(){
+function flipCard(){
     cardsInPlay1.push(player1[0]);
     player1.shift();
     cardsInPlay1.push(player2[0]);
     player2.shift();
-    compare();
     }
+function playRound(){
+    flipCard();
+    compare();
+}
