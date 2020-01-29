@@ -14,6 +14,17 @@ function createDeck(){
     }
     return mainDeck;
 }
+function deal(){
+    let i = 0;
+    let j = 0;
+    let temp = null;
+    for(i=mainDeck.length - 1; i > 0; i-=1){
+        j = Math.floor(Math.random() * (i + 1));
+        temp = mainDeck[i];
+        mainDeck[i] = mainDeck[j];
+        mainDeck[j] = temp
+    }
+}
 function compare(){
     if(cardsInPlay1[0].rank > cardsInPlay2[0].rank){
         player1.push(cardsInPlay1[0], cardsInPlay2[0]);
