@@ -5,6 +5,7 @@ let player1=[];
 let player2=[];
 let cardsInPlay1=[];
 let cardsInPlay2=[];
+
 function createDeck(){
     for (let i=0; i<suits.length; i++){
         for(let j=0; j<values.length; j++){
@@ -15,15 +16,26 @@ function createDeck(){
     return mainDeck;
 }
 function deal(){
-    let i = 0;
-    let j = 0;
-    let temp = null;
-    for(i=mainDeck.length - 1; i > 0; i-=1){
-        j = Math.floor(Math.random() * (i + 1));
-        temp = mainDeck[i];
-        mainDeck[i] = mainDeck[j];
-        mainDeck[j] = temp
+    shuffle(){                    //Fisher-Yates Shuffle
+        let i = 0;
+        let j = 0;
+        let temp = null;
+        for(i=mainDeck.length - 1; i > 0; i-=1){
+            j = Math.floor(Math.random() * (i + 1));
+            temp = mainDeck[i];
+            mainDeck[i] = mainDeck[j];
+            mainDeck[j] = temp
+        }
     }
+    for(i=0; i<mainDeck.length; i++){
+        if(i % 2 === 0){
+            player1.shift(mainDeck[i])
+        }
+        else{
+            player2.shift(mainDeck[i])
+        }
+    }
+    
 }
 function compare(){
     if(cardsInPlay1[0].rank > cardsInPlay2[0].rank){
@@ -39,9 +51,10 @@ function compare(){
     else{
         war();
     }
+    //function end round(){}
 }
 function war(){
-    cardsInPlay1.forEach()
+    // cardsInPlay1.forEach()
 };
 
 function flipCard(){
