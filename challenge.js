@@ -16,16 +16,12 @@ function createDeck(){
     return mainDeck;
 }
 function deal(){
-    shuffle(){                    //Fisher-Yates Shuffle
-        let i = 0;
-        let j = 0;
-        let temp = null;
-        for(i=mainDeck.length - 1; i > 0; i-=1){
-            j = Math.floor(Math.random() * (i + 1));
-            temp = mainDeck[i];
+        for(let i=mainDeck.length - 1; i > 0; i-=1){ 
+            let j = Math.floor(Math.random() * (i + 1));
+            let temp = mainDeck[i];
             mainDeck[i] = mainDeck[j];
             mainDeck[j] = temp
-        }
+        }  //Fisher-Yates Shuffle
     }
     for(i=0; i<mainDeck.length; i++){
         if(i % 2 === 0){
