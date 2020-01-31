@@ -6,6 +6,9 @@ let player2=[];
 let cardsInPlay1=[];
 let cardsInPlay2=[];
 
+let button = document.getElementsByClassName("play-game");
+addEventListener("click", playGame);
+
 function createDeck(){
     for (let i=0; i<suits.length; i++){
         for(let j=0; j<values.length; j++){
