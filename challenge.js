@@ -41,33 +41,31 @@ function compare(){
         player1.push(cardsInPlay1[0], cardsInPlay2[0]);
         cardsInPlay1 = [];
         cardsInPlay2 = [];
-        console.log(`Player 1 wins this round! Player 1 has ${player1.length} cards!`)
+        console.log(`Player 1 flipped the ${cardsInPlay1[0].Value} of ${cardsInPlay1[0].Suit}. Player 2 flipped the ${cardsInPlay2[0].Value} of ${cardsInPlay2[0].Suit}. Player 1 wins this round! Player 1 has ${player1.length} cards! Player 2 has ${player2.length} cards!`)
     }
     else if(cardsInPlay1[0].rank < cardsInPlay2[0].rank){
-        player2.push(cardsInPlay1[0], cardsInPlay2[0]);
+        player2.push(cardsInPlay2[0], cardsInPlay1[0]);
         cardsInPlay1 = [];
         cardsInPlay2 = [];
-        console.log(`Player 2 wins this round! Player 2 has ${player2.length} cards!`)
+        console.log(`Player 1 flipped the ${cardsInPlay1[0].Value} of ${cardsInPlay1[0].Suit}. Player 2 flipped the ${cardsInPlay2[0].Value} of ${cardsInPlay2[0].Suit}. Player 2 wins this round! Player 2 has ${player2.length} cards! Player 1 has ${player1.length} cards!`)
     }
     else{
         war();
         console.log("I declare war!")
     }
-    
-    //function end round(){}
 }
 function compareWar(){
     if(cardsInPlay1[0].rank > cardsInPlay2[0].rank){
         player1.push(...cardsInPlay1, ...cardsInPlay2);
         cardsInPlay1 = [];
         cardsInPlay2 = [];
-        console.log(`Player 1 wins this war! Player 1 has ${player1.length} cards!`)
+        console.log(`Player 1 wins this war! Player 1 has ${player1.length} cards! Player 2 has ${player2.length} cards!`)
     }
     else if(cardsInPlay1[0].rank < cardsInPlay2[0].rank){
-        player2.push(...cardsInPlay1, ...cardsInPlay2);
+        player2.push(...cardsInPlay2, ...cardsInPlay1);
         cardsInPlay1 = [];
         cardsInPlay2 = [];
-        console.log(`Player 2 wins this war! Player 2 has ${player2.length} cards!`)
+        console.log(`Player 2 wins this war! Player 2 has ${player2.length} cards! Player 1 has ${player1.length} cards!`)
     }
     else{
         war();
@@ -75,8 +73,8 @@ function compareWar(){
     }
 }
 function war(){
-    cardsInPlay1.unshift(player1[0], player1[1], player1[2], player1[3]);
-    cardsInPlay2.unshift(player2[0], player2[1], player2[2], player2[3]);
+    cardsInPlay1.unshift(...player1.splice(0,4));
+    cardsInPlay2.unshift(...player2.splice(0,4));
     compareWar();
 };
 
@@ -90,12 +88,13 @@ function playRound(){
     flipCard();
     compare();
     checkForWinner();
-    // return //something
 }
 function checkForWinner(){
     if(player1.length===52){
         console.log("Congratulations Player 1!")
     } else if(player2.length===52){
         console.log("Congratulations Player 2!")
-    } else{ console.log("This game is not yet over!")}
+    } else{ 
+       playRound(); 
+    }
 }
