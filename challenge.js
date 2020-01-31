@@ -41,13 +41,15 @@ function compare(){
         player1.push(cardsInPlay1[0], cardsInPlay2[0]);
         cardsInPlay1 = [];
         cardsInPlay2 = [];
-        console.log(`Player 1 flipped the ${cardsInPlay1[0].Value} of ${cardsInPlay1[0].Suit}. Player 2 flipped the ${cardsInPlay2[0].Value} of ${cardsInPlay2[0].Suit}. Player 1 wins this round! Player 1 has ${player1.length} cards! Player 2 has ${player2.length} cards!`)
+        console.log(`Player 1 wins this round! Player 1 has ${player1.length} cards! Player 2 has ${player2.length} cards!`)
+        //Player 1 flipped the ${cardsInPlay1[0].value} of ${cardsInPlay1[0].suit}. Player 2 flipped the ${cardsInPlay2[0].value} of ${cardsInPlay2[0].suit}. 
     }
     else if(cardsInPlay1[0].rank < cardsInPlay2[0].rank){
         player2.push(cardsInPlay2[0], cardsInPlay1[0]);
         cardsInPlay1 = [];
         cardsInPlay2 = [];
-        console.log(`Player 1 flipped the ${cardsInPlay1[0].Value} of ${cardsInPlay1[0].Suit}. Player 2 flipped the ${cardsInPlay2[0].Value} of ${cardsInPlay2[0].Suit}. Player 2 wins this round! Player 2 has ${player2.length} cards! Player 1 has ${player1.length} cards!`)
+        console.log(`Player 2 wins this round! Player 2 has ${player2.length} cards! Player 1 has ${player1.length} cards!`)
+        //Player 1 flipped the ${cardsInPlay1[0].value} of ${cardsInPlay1[0].suit}. Player 2 flipped the ${cardsInPlay2[0].value} of ${cardsInPlay2[0].suit}. 
     }
     else{
         war();
@@ -91,8 +93,12 @@ function playRound(){
 }
 function checkForWinner(){
     if(player1.length===52){
+        player1 = [];
+        shuffle();
         console.log("Congratulations Player 1!")
     } else if(player2.length===52){
+        player2 = [];
+        shuffle();
         console.log("Congratulations Player 2!")
     } else{ 
        playRound(); 
