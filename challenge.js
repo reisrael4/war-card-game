@@ -15,6 +15,10 @@ function createDeck(){
     }
     return mainDeck;
 }
+function playGame(){
+    deal();
+    playRound();
+}
 function shuffle(){
     //Fisher-Yates Shuffle
     for(let i=mainDeck.length - 1; i > 0; i-=1){ 
