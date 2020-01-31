@@ -108,3 +108,5 @@ function checkForWinner(){
        playRound(); 
     }
 }
+createDeck();
+playGame();
